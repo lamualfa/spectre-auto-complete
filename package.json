@@ -1,0 +1,15 @@
+{
+  "name": "spectre-auto-complete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "spectre-auto-complete.js",
+  "scripts": {
+    "build": "uglifyjs spectre-auto-complete.js -c -m -o spectre-auto-complete.min.js && uglifycss spectre-auto-complete.css > spectre-auto-complete.min.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "minify()": {},
+  "dependencies": {
+    "uglify-es": "^3.3.9"
+  }
+}
