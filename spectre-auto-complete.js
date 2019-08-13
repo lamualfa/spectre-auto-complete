@@ -18,16 +18,22 @@ $.fn.extend({
       return element instanceof Element || element instanceof HTMLDocument;
     }
 
-    function defaultRender(source, $inpt, $menu, opts) {
+    function defaultRender(value, source, $inpt, $menu, opts) {
+      if (!value.length && !source.length) {
+        $menu.empty().css("display", "none");
+
+        return;
+      }
+
       $menu.empty().css("display", "block");
 
-      const menuItemClass = `menu-item${
+      const menuItemClass = `menu-item not-found${
         opts.menuItemClass.length ? " " + opts.menuItemClass : ""
       }`;
 
-      if (!source.length) {
+      if (!source.length && value.length) {
         if (typeof opts.empty === "string") {
-          $menu.append(`<div class="${menuItemClass}">${v}</div>`);
+          $menu.append(`<div class="${menuItemClass}">${opts.empty}</div>`);
         } else if (isElement(opts.empty)) {
           $menu.append(opts.empty);
         }
@@ -80,6 +86,8 @@ $.fn.extend({
 
       opts["cache"] = options.cache || false;
       opts["clearCacheInterval"] = options.clearCacheInterval || 1000 * 60 * 10;
+
+      opts["runOnFocus"] = options.runOnFocus || true;
     }
 
     if (opts.cache) {
@@ -173,7 +181,7 @@ $.fn.extend({
               const caches = event.data.caches;
 
               if (caches[value]) {
-                render(caches[value], $inpt, $menu, opts);
+                render(value, caches[value], $inpt, $menu, opts);
 
                 return;
               }
@@ -185,7 +193,7 @@ $.fn.extend({
                   event.data.caches[value] = data;
                 }
 
-                render(data, $inpt, $menu, opts);
+                render(value, data, $inpt, $menu, opts);
               } else {
                 error(err);
               }
@@ -195,7 +203,39 @@ $.fn.extend({
 
             source(value, callback, $container, $inpt, opts);
           } else if (Array.isArray(source)) {
-            render(source, $inpt, $menu, opts);
+            let data = [];
+
+            if (value.length) {
+              if (opts.cache) {
+                const caches = event.data.caches;
+
+                if (caches[value]) {
+                  render(value, caches[value], $inpt, $menu, opts);
+
+                  return;
+                }
+              }
+
+              const regexpValue = new RegExp(value, "g");
+
+              for (let i = 0; i < source.length; i++) {
+                const v = source[i];
+
+                if (typeof v === "string") {
+                  if (regexpValue.test(v)) {
+                    data.push(v.replace(regexpValue, "<mark>$&</mark>"));
+                  }
+                }
+
+                continue;
+              }
+
+              if (opts.cache) {
+                event.data.caches[value] = data;
+              }
+            }
+
+            render(value, data, $inpt, $menu, opts);
           }
         }
       }
@@ -204,7 +244,7 @@ $.fn.extend({
     }, opts.delay);
 
     $inpt.on(
-      "focus keydown",
+      `keydown${options.runOnFocus ? " focus" : ""}`,
       {
         $container: $container,
         $inpt: $inpt,

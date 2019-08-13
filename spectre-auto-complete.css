@@ -10,3 +10,9 @@
   background-color: #f1f1fc;
   color: #5755d9;
 }
+.spectre-auto-complete-container .menu .menu-item.not-found {
+  color: rgb(119, 119, 119);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
