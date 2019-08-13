@@ -27,11 +27,13 @@ $.fn.extend({
 
       $menu.empty().css("display", "block");
 
-      const menuItemClass = `menu-item not-found${
+      let menuItemClass = `menu-item${
         opts.menuItemClass.length ? " " + opts.menuItemClass : ""
       }`;
 
       if (!source.length && value.length) {
+        menuItemClass += " not-found";
+
         if (typeof opts.empty === "string") {
           $menu.append(`<div class="${menuItemClass}">${opts.empty}</div>`);
         } else if (isElement(opts.empty)) {

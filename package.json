@@ -1,15 +1,28 @@
 {
   "name": "spectre-auto-complete",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Autocomplete library for spectre css framework https://picturepan2.github.io/spectre/",
   "main": "spectre-auto-complete.js",
   "scripts": {
     "build": "uglifyjs spectre-auto-complete.js -c -m -o spectre-auto-complete.min.js && uglifycss spectre-auto-complete.css > spectre-auto-complete.min.css"
   },
-  "author": "",
-  "license": "ISC",
-  "minify()": {},
-  "dependencies": {
+  "author": "laodemalfatih",
+  "license": "MIT",
+  "dev-dependencies": {
     "uglify-es": "^3.3.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laodemalfatih/spectre-auto-complete.git"
+  },
+  "keywords": [
+    "css",
+    "spectre",
+    "autocomplete",
+    "jquery"
+  ],
+  "bugs": {
+    "url": "https://github.com/laodemalfatih/spectre-auto-complete/issues"
+  },
+  "homepage": "https://github.com/laodemalfatih/spectre-auto-complete#readme"
 }
