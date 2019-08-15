@@ -63,18 +63,20 @@ $(".form-autocomplete").autoComplete({
 ```
 ### Options arguments:
 
-- `source`:
-  - `Function`:
-    - `value`: Value of input.
-    - `callback`: `Function`, Ex: `callback(data, error)`
-  - `Array`: Ex: `["banana", "guava", "mango", "orange"]`
-  - Default: `[]`
-  
-- `render`:
-  - `Function`:
-    - `value`
-    - `source`: Return from `source` option.
-    - `$input`: JQuery element of input.
-    - `$menu`: JQuery element of container for auto-complete, see: [Autocomplete](https://picturepan2.github.io/spectre/experimentals/autocomplete.html#autocomplete).
-    - `options`: Instance of `options`.
-    - Default: `defaultRender` from lib.
+```javascript
+options["source"] = options.source || [];
+options["render"] = options.render || defaultRender;
+options["error"] = options.error || console.error;
+
+options["delay"] = options.delay || 0;
+options["minChar"] = options.minChar || 0;
+options["menuClass"] = options.menuClass || "";
+options["menuItemClass"] = options.menuItemClass || "";
+
+options["empty"] = options.empty || "Not Found";
+
+options["cache"] = options.cache || false;
+options["clearCacheInterval"] = options.clearCacheInterval || 1000 * 60 * 10;
+
+options["runOnFocus"] = options.runOnFocus || true;
+```
