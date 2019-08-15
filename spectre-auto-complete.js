@@ -241,6 +241,8 @@ $.fn.extend({
 
             render(value, data, $inpt, $menu, opts);
           }
+        } else {
+          $menu.css("display", "none");
         }
       }
 
