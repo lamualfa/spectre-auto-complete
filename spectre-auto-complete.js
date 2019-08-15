@@ -51,7 +51,7 @@ $.fn.extend({
         } else if (typeof v === "object") {
           const $menuItem = $(
             `<div class="${menuItemClass}"><a href="javascript:void(0)">${
-              v.value
+              v.text
             }</a></div>`
           );
 
@@ -62,6 +62,8 @@ $.fn.extend({
           if (typeof v.data === "object") {
             $menuItem.data(v.data);
           }
+
+          $menu.append($menuItem);
         } else if (isElement(v)) {
           $menu.append(v);
         }
@@ -266,16 +268,23 @@ $.fn.extend({
       function(event) {
         const $inpt = event.data.$inpt;
         const $this = $(this);
+        let $menuItem;
+
+        if ($this.is("a")) {
+          $menuItem = $this.parent(".menu-item");
+        } else {
+          $menuItem = $this;
+        }
 
         const $menu = $inpt.siblings(".menu");
 
-        $this.removeClass("hover");
+        $menuItem.removeClass("hover");
 
-        const val = $this.data("value") || $this.find("a").text();
+        const val = $menuItem.data("value") || $menuItem.find("a").text();
 
         $menu.css("display", "none");
 
-        $inpt.val(val);
+        $inpt.val(val).data($menuItem.data());
 
         return;
       }
