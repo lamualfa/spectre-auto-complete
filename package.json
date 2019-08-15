@@ -1,6 +1,6 @@
 {
   "name": "spectre-auto-complete",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Autocomplete library for spectre css framework https://picturepan2.github.io/spectre/",
   "main": "spectre-auto-complete.js",
   "scripts": {

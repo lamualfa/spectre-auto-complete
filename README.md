@@ -11,8 +11,8 @@ Autocomplete library for spectre css framework https://picturepan2.github.io/spe
 #### CDN:
 
 ```
-https://cdn.jsdelivr.net/npm/spectre-auto-complete@1.0.1/spectre-auto-complete.min.css
-https://cdn.jsdelivr.net/npm/spectre-auto-complete@1.0.1/spectre-auto-complete.min.js
+https://cdn.jsdelivr.net/npm/spectre-auto-complete@latest/spectre-auto-complete.min.css
+https://cdn.jsdelivr.net/npm/spectre-auto-complete@latest/spectre-auto-complete.min.js
 ```
 
 #### Example:
@@ -26,14 +26,14 @@ https://cdn.jsdelivr.net/npm/spectre-auto-complete@1.0.1/spectre-auto-complete.m
         <link rel="stylesheet" href="spectre-icons.min.css">
 
         <!-- spectre-auto-complete CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre-auto-complete@1.0.1/spectre-auto-complete.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre-auto-complete@latest/spectre-auto-complete.min.css">
     </header>
     <body>
         <!-- JQuery -->
         <script src="jquery-3.x.min.js"></script>
         
         <!-- spectre-auto-complete JS -->
-        <script src="https://cdn.jsdelivr.net/npm/spectre-auto-complete@1.0.1/spectre-auto-complete.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/spectre-auto-complete@latest/spectre-auto-complete.min.js"></script>
     </body>
 </html>
 ```
