@@ -2,6 +2,8 @@
 
 Autocomplete library for spectre css framework https://picturepan2.github.io/spectre/
 
+[![](https://data.jsdelivr.com/v1/package/npm/spectre-auto-complete/badge)](https://www.jsdelivr.com/package/npm/spectre-auto-complete)
+
 ### Instalation:
 
 #### Requirement:
